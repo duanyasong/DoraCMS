@@ -451,7 +451,13 @@ class AdminUserController extends Controller {
             powerPathMaps.splice(0, 0, "dashboard");
             powerPathMaps.splice(0, 0, "navbar");
 
+		    //console.log(powerPathMaps);
+
+
             for (const pathItem of powerPathMaps) {
+
+
+
 
                 if (this.app.config.env == 'local') {
                     // 读取本地文件获取调试端口号
@@ -476,7 +482,7 @@ class AdminUserController extends Controller {
                     } else {
                         renderMap.push({
                             name: pathItem,
-                            path: `${this.app.config.origin + '/cms/plugins' + this.app.config.static.prefix}/admin/${pathItem}/js/app.js`
+                            path: `${this.app.config.server_path + this.app.config.static.prefix}/${pathItem}/js/app.js`
                         })
                     }
 
@@ -516,6 +522,8 @@ class AdminUserController extends Controller {
 
             }
         }
+
+
 
         await ctx.render('manage/index.html', {
             renderMap: renderMap,

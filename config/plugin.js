@@ -45,6 +45,14 @@ exports.doraAds = {
 };
 // doraAdsPluginEnd
 
+// doraBannerPluginBegin
+exports.doraBanner = {
+    enable: true,
+    package: 'egg-dora-banner',
+    path: path.join(__dirname, "../lib/plugin/egg-dora-banner")
+};
+// doraBannerPluginBegin
+
 // doraAnnouncePluginBegin
 exports.doraAnnounce = {
     enable: true,
@@ -100,6 +108,14 @@ exports.doraHelpCenter = {
     path: path.join(__dirname, "../lib/plugin/egg-dora-helpcenter")
 };
 // doraHelpCenterPluginEnd
+
+// dstuFaqPluginBegin
+exports.dstuFaq = {
+    enable: true,
+    package: 'egg-dstu-faq',
+    path: path.join(__dirname, "../lib/plugin/egg-dstu-faq")
+};
+// dstuFaqPluginEnd
 
 // doraSiteMessagePluginBegin
 exports.doraSiteMessage = {
@@ -166,9 +182,16 @@ exports.validate = {
 };
 // doraValidatePluginEnd
 
+
+exports.routerPlus = {
+  enable: true,
+  package: 'egg-router-plus',
+};
+
 // PLUGIN_NORMALPLUGIN_END
 
 
 
 
 // EGGPLUGINCONFIG
+

@@ -24,6 +24,7 @@ module.exports = {
     getExtendApiList() {
         let app = this;
         let pluginFile = path.join(app.config.baseDir, `config/plugin.js`);
+
         let pluginInfo = require(pluginFile);
         let plugins = [];
         let pluginAdminApiWhiteList = [];

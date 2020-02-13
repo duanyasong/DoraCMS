@@ -9,8 +9,8 @@ module.exports = appInfo => {
 
     cluster: {
       listen: {
-        port: 8080,
-        hostname: '127.0.0.1',
+        port: 9800,
+        hostname: '0.0.0.0',
       }
     },
 
@@ -123,6 +123,13 @@ module.exports = appInfo => {
     },
     // doraAdsPluginEnd
 
+    // doraBannerPluginBegin
+    bannerRouter: {
+      match: [ctx => ctx.path.startsWith('/manage/banner'), ctx => ctx.path.startsWith('/api/banner')],
+    },
+    // doraBannerPluginBegin
+
+
     // doraAnnouncePluginBegin
     announceRouter: {
       match: [ctx => ctx.path.startsWith('/manage/systemAnnounce')],
@@ -168,6 +175,12 @@ module.exports = appInfo => {
       match: [ctx => ctx.path.startsWith('/manage/helpCenter'), ctx => ctx.path.startsWith('/api/helpCenter')],
     },
     // doraHelpCenterPluginEnd
+
+    // dstuFaqPluginBegin
+    faqRouter: {
+      match: [ctx => ctx.path.startsWith('/manage/faq'), ctx => ctx.path.startsWith('/api/faq')],
+    },
+    // dstuFaqPluginEnd
 
     // doraSiteMessagePluginBegin
     siteMessageRouter: {

@@ -4,7 +4,7 @@ const path = require('path')
 module.exports = appInfo => {
 
     return {
-        admin_root_path: 'http://localhost',
+        admin_root_path: 'http://122.112.250.70:9800',
         // DEV_CONFIG_MODULES_BEGIN
         dev_modules: [
             // 'navbar',
@@ -50,8 +50,8 @@ module.exports = appInfo => {
         logger: {
             dir: path.join(appInfo.baseDir, 'logs'),
         },
-        server_path: 'http://localhost:8080',
-        server_api: 'http://localhost:8080/api',
+        server_path: 'http://122.112.250.70:9800',
+        server_api: 'http://122.112.250.70:9800/api',
         
 
     }
