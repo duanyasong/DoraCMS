@@ -9,7 +9,7 @@ const fs = require('fs')
 const qr = require('qr-image')
 const moment = require('moment')
 
-class HomeController extends Controller {
+class PageController extends Controller {
 
     // 获取页面基础信息
     async getSiteInfo(ctx, appConfig) {
@@ -153,6 +153,147 @@ class HomeController extends Controller {
         ctx.pageType = "index"
         await this.getPageData(this);
     }
+
+    async getDataForLoginPage() {
+        const ctx = this.ctx;
+        ctx.query.current = ctx.params.current;
+        //ctx.tempPage = 'index.html';
+		ctx.tempPage = 'eggcommerce/login.html';
+        //ctx.pageType = "index"
+        await this.getPageData(this);
+    }
+
+    async getDataForRegisterPage() {
+        const ctx = this.ctx;
+        ctx.query.current = ctx.params.current;
+        //ctx.tempPage = 'index.html';
+		ctx.tempPage = 'eggcommerce/register.html';
+        //ctx.pageType = "index"
+        await this.getPageData(this);
+    }
+
+
+    async getDataForCheckoutPage() {
+        const ctx = this.ctx;
+        ctx.query.current = ctx.params.current;
+        //ctx.tempPage = 'index.html';
+		ctx.tempPage = 'eggcommerce/checkout.html';
+        //ctx.pageType = "index"
+        await this.getPageData(this);
+    }
+
+    async getDataForCartPage() {
+        const ctx = this.ctx;
+        ctx.query.current = ctx.params.current;
+        //ctx.tempPage = 'index.html';
+		ctx.tempPage = 'eggcommerce/cart.html';
+        //ctx.pageType = "index"
+        await this.getPageData(this);
+    }
+
+    async getDataForWishlistPage() {
+        const ctx = this.ctx;
+        ctx.query.current = ctx.params.current;
+        //ctx.tempPage = 'index.html';
+		ctx.tempPage = 'eggcommerce/wishlist.html';
+        //ctx.pageType = "index"
+        await this.getPageData(this);
+    }
+
+    async getDataForShopPagePage() {
+        const ctx = this.ctx;
+        ctx.query.current = ctx.params.current;
+        //ctx.tempPage = 'index.html';
+		ctx.tempPage = 'eggcommerce/shop-page.html';
+        //ctx.pageType = "index"
+        await this.getPageData(this);
+    }
+
+    async getDataForShopListPage() {
+        const ctx = this.ctx;
+        ctx.query.current = ctx.params.current;
+        //ctx.tempPage = 'index.html';
+		ctx.tempPage = 'eggcommerce/shop-list.html';
+        //ctx.pageType = "index"
+        await this.getPageData(this);
+    }
+
+
+    async getDataForSingleProductPage() {
+        const ctx = this.ctx;
+        ctx.query.current = ctx.params.current;
+        //ctx.tempPage = 'index.html';
+		ctx.tempPage = 'eggcommerce/single-product.html';
+        //ctx.pageType = "index"
+        await this.getPageData(this);
+    }
+
+
+    async getDataForAboutUsPage() {
+        const ctx = this.ctx;
+        ctx.query.current = ctx.params.current;
+        //ctx.tempPage = 'index.html';
+		ctx.tempPage = 'eggcommerce/about-us.html';
+        //ctx.pageType = "index"
+        await this.getPageData(this);
+    }
+
+
+    async getDataForContactPage() {
+        const ctx = this.ctx;
+        ctx.query.current = ctx.params.current;
+        //ctx.tempPage = 'index.html';
+		ctx.tempPage = 'eggcommerce/contact.html';
+        //ctx.pageType = "index"
+        await this.getPageData(this);
+    }
+
+    async getDataFor404Page() {
+        const ctx = this.ctx;
+        ctx.query.current = ctx.params.current;
+        //ctx.tempPage = 'index.html';
+		ctx.tempPage = 'eggcommerce/404.html';
+        //ctx.pageType = "index"
+        await this.getPageData(this);
+    }
+
+    async getDataForBlogPagePage() {
+        const ctx = this.ctx;
+        ctx.query.current = ctx.params.current;
+        //ctx.tempPage = 'index.html';
+		ctx.tempPage = 'eggcommerce/blog-page.html';
+        //ctx.pageType = "index"
+        await this.getPageData(this);
+    }
+
+
+    async getDataForBlogDetailsPage() {
+        const ctx = this.ctx;
+        ctx.query.current = ctx.params.current;
+        //ctx.tempPage = 'index.html';
+		ctx.tempPage = 'eggcommerce/blog-details.html';
+        //ctx.pageType = "index"
+        await this.getPageData(this);
+    }
+
+    async getDataForBlogSidebarPage() {
+        const ctx = this.ctx;
+        ctx.query.current = ctx.params.current;
+        //ctx.tempPage = 'index.html';
+		ctx.tempPage = 'eggcommerce/blog-sidebar.html';
+        //ctx.pageType = "index"
+        await this.getPageData(this);
+    }
+
+    async getDataForBlogRightSidebarPage() {
+        const ctx = this.ctx;
+        ctx.query.current = ctx.params.current;
+        //ctx.tempPage = 'index.html';
+		ctx.tempPage = 'eggcommerce/blog-right-sidebar.html';
+        //ctx.pageType = "index"
+        await this.getPageData(this);
+    }
+
 
     async getDataForCatePage() {
         const ctx = this.ctx;
@@ -504,4 +645,4 @@ class HomeController extends Controller {
 
 }
 
-module.exports = HomeController;
+module.exports = PageController;
