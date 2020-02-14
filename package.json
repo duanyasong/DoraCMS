@@ -1,6 +1,6 @@
 {
-  "name": "doracms-egg",
-  "version": "2.1.4",
+  "name": "eggcommerce",
+  "version": "2.34.1",
   "description": "",
   "dependencies": {
     "archiver": "^3.1.1",
@@ -86,9 +86,9 @@
     "dist"
   ],
   "apidoc": {
-    "title": "DoraCMS Api",
-    "description": "DoraCMS App接口文档",
-    "url": "http://localhost:8080"
+    "title": "Egg Commerce Api",
+    "description": "Egg Commerce Api接口文档",
+    "url": "http://api.eggcommerce.cn"
   },
   "_moduleAliases": {
     "@root": ".",
