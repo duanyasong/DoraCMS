@@ -6,7 +6,7 @@
             <div class="direct-chat-msg" v-for="msg in messages" :key="msg._id">
                 <div class="direct-chat-info clearfix">
                     <span class="direct-chat-name pull-left">
-                        <a href="#">{{msg.utype =='0'?msg.author.userName:msg.adminAuthor.userName}}</a>
+                        <a href="#">{{msg.utype =='0'?(msg.author?msg.author.userName:''):msg.adminAuthor.userName}}</a>
                         {{$t('main.messageIn')}}
                         <a class="direct-chat-contentTitle" :href="'/details/'+msg.contentId._id+'.html'" target="_blank">{{msg.contentId.stitle | cutWords(20)}}</a> {{msg.utype =='0'?$t('main.messageSaid'):$t('main.messageReply')}}
                         <a href="#">{{msg.utype =='1'?(msg.replyAuthor ? msg.replyAuthor.userName : (msg.adminReplyAuthor ? msg.adminReplyAuthor.userName : '')) : ''}}</a>

@@ -1,0 +1,26 @@
+<svg width="230" height="40" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <!-- Generator: Sketch Beta 42 (36780) - http://www.bohemiancoding.com/sketch -->
+ <title>Logo</title>
+ <desc>Created with Sketch Beta.</desc>
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="42" width="232" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g stroke="null" fill-rule="evenodd" fill="none" id="Page-1">
+   <g stroke="null" fill="#494949" id="Developer-Copy-3">
+    <g stroke="null" id="logo">
+     <g stroke="null" id="Logo">
+      <g stroke="null" id="Page-1">
+       <path stroke="null" id="Combined-Shape" d="m9.2,20.17263l0.8,-1.37933l4,6.89665l-8,0l3.2,-5.51732l-3.2,5.51743l-4,-6.89678l4,-6.89665l4.00004,-6.89658l7.99987,0l-1.59995,2.75866l1.6,-2.75866l4.00013,6.89665l-8.00009,0l-7.99995,0l3.99995,6.89658l-0.8,1.37935zm10.92364,8.75315l-2.12364,3.66221l-4,-6.89798l8,0l-1.87636,3.23577l1.87645,-3.23583l3.99987,6.89798l-8,0l2.12368,-3.66215zm5.87636,-10.1325l4,-6.89665l4,6.89665l-8,0zm-12,-6.89663l-4,6.89665l-4,-6.89665l8,0zm3.99996,-6.8966l8,0l4,6.89665l-7.99987,0l-4.00013,-6.89665zm12.00004,6.8966l-4,6.89665l-4,-6.89665l8,0zm-24.00004,13.79336l8,0l4,6.89798l-7.99987,0l-4.00013,-6.89798z"/>
+       <polygon stroke="null" points="16.232437133789062,22.241722106933594 14.232437133789062,18.793262481689453 16.232437133789062,15.344804763793945 20.232437133789062,15.344804763793945 22.232437133789062,18.793262481689453 20.232437133789062,22.241722106933594 " id="Fill-12"/>
+      </g>
+     </g>
+    </g>
+   </g>
+  </g>
+  <text font-style="normal" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Palatino Linotype', 'Book Antiqua', Palatino, serif" font-size="30" id="svg_1" y="24.85" x="38.9" stroke-width="0" stroke="#000" fill="#494949">eggcommerce</text>
+ </g>
+</svg>

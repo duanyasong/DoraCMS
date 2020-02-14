@@ -1,5 +1,6 @@
 <template>
-  <a href="https://github.com/doramart/DoraCMS" target="_blank" class="github-corner" aria-label="View source on Github">
+
+  <!--<a href="https://github.com/duanyasong/eggcommerce" target="_blank" class="github-corner" aria-label="View source on Github">
     <svg
       width="80"
       height="80"
@@ -17,7 +18,7 @@
         fill="currentColor"
         class="octo-body"/>
     </svg>
-  </a>
+  </a>-->
 </template>
 
 <style scoped>

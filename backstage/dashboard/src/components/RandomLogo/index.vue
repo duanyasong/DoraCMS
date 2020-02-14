@@ -1,10 +1,10 @@
 <template>
   <div class="random-logo">
-    <div v-if="(user.logo).indexOf('defaultlogo.png')>0">
+    <div v-if="!user||(user.logo).indexOf('defaultlogo.png')>0">
       <span
         class="randomLogo"
         :style="{backgroundColor:renderLogo()}"
-      >{{(user.userName).substring(0,1).toLocaleUpperCase()}}</span>
+      >{{(user?user.userName:'?').substring(0,1).toLocaleUpperCase()}}</span>
     </div>
     <div v-else>
       <img :src="user.logo" :alt="user.userName" :title="user.userName" />

@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: 'DoraCMS Admin',
+  title: 'Egg Commerce Admin',
 
   /**
    * @type {boolean} true | false
@@ -16,14 +16,14 @@ module.exports = {
 
   server_api: '',
   // 加密key
-  token_key: 'admin_doracms',
+  token_key: 'admin_eggcommerce',
   // 中台tokenkey
-  admin_token_key: 'admin_doracmsapi',
+  admin_token_key: 'admin_eggcommerceapi',
   // 宿主后台管理根目录
   admin_base_path: '/admin',
 
   // 宿主工程目录
-  host_project_path: '/Users/dora/Documents/dora/coding.net/egg-cms',
+  host_project_path: '/',
   // 七牛文件上传目录
   qiniuStaticPath: '/'
 }
