@@ -19,6 +19,20 @@ exports.redis = {
     package: 'egg-redis',
 };
 
+
+exports.routerPlus = {
+  enable: true,
+  package: 'egg-router-plus',
+};
+
+// doraBannerPluginBegin
+exports.doraBanner = {
+    enable: true,
+    package: 'egg-dora-banner',
+    path: path.join(__dirname, "../lib/plugin/egg-dora-banner")
+};
+// doraBannerPluginBegin
+
 exports.doraBackUpData = {
     enable: true,
     package: 'egg-dora-backupdata',
@@ -181,6 +195,8 @@ exports.doraMailDelivery = {
     path: path.join(__dirname, "../lib/plugin/egg-dora-maildelivery")
 };
 // doraMailDeliveryPluginEnd
+
+
 
 // PLUGIN_NORMALPLUGIN_END
 
