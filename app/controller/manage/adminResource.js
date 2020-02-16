@@ -161,6 +161,10 @@ class AdminResourceController extends Controller {
         try {
 
             let fields = ctx.request.body || {};
+
+
+
+
             const formObj = {
                 label: fields.label,
                 type: fields.type,
@@ -175,7 +179,10 @@ class AdminResourceController extends Controller {
             }
 
 
+
+
             ctx.validate(adminResourceRule.form(ctx), formObj);
+
 
 
 
@@ -183,11 +190,16 @@ class AdminResourceController extends Controller {
                 query: {
                     label: fields.label
                 }
-            })
+            });
+
+
+
 
             if (!_.isEmpty(oldResource) && oldResource._id != fields._id) {
-                throw new Error(ctx.__("user_action_tips_repeat", [ctx.__('label_resourceName')]));
+                //throw new Error(ctx.__("user_action_tips_repeat", [ctx.__('label_resourceName')]));
             }
+
+
 
             await ctx.service.adminResource.update(ctx, fields._id, formObj);
 
