@@ -1,5 +1,8 @@
 export default {
   bannerslider: {
+    title1: "Title 1",
+    title2: "Title 2",
+    linktext: "Link Text",
     name: "Bannerslider Name",
     type: "Bannerslider Type",
     typeText: "letter",

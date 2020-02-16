@@ -1,5 +1,8 @@
 export default {
   bannerslider: {
+    title1: "粗标题",
+    title2: "细标题",
+    linktext: "链接文本",
     name: "广告名",
     type: "广告类型",
     typeText: "文字",

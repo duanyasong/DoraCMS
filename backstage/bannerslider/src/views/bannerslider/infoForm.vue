@@ -13,6 +13,9 @@
         <el-form-item :label="$t('bannerslider.name')" prop="name">
           <el-input size="small" v-model="formState.formData.name"></el-input>
         </el-form-item>
+
+
+
         <el-form-item v-if="!formState.edit" :label="$t('bannerslider.type')" prop="type">
           <el-radio-group v-model="formState.formData.type" @change="changeType">
             <el-radio class="radio" label="0">{{$t('bannerslider.typeText')}}</el-radio>

@@ -22,9 +22,28 @@
         <el-form-item :label="$t('bannerslider.dis')" prop="alt">
           <el-input size="small" v-model="formState.formData.alt"></el-input>
         </el-form-item>
+
+
+        <el-form-item :label="$t('bannerslider.title1')" prop="title1">
+          <el-input size="small" v-model="formState.formData.title1"></el-input>
+        </el-form-item>
+
+
+        <el-form-item :label="$t('bannerslider.title2')" prop="title2">
+          <el-input size="small" v-model="formState.formData.title2"></el-input>
+        </el-form-item>
+
+        <el-form-item :label="$t('bannerslider.linktext')" prop="linktext">
+          <el-input size="small" v-model="formState.formData.linktext"></el-input>
+        </el-form-item>
+
         <el-form-item :label="$t('bannerslider.link')" prop="link">
           <el-input size="small" v-model="formState.formData.link"></el-input>
         </el-form-item>
+
+
+
+
         <el-form-item :label="$t('bannerslider.appLink')" prop="appLink">
           <el-input size="small" v-model="formState.formData.appLink"></el-input>
         </el-form-item>
