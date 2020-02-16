@@ -17,7 +17,16 @@ module.exports = () => {
                 if (ctx.originalUrl.indexOf('/admin/') == 0) {
                     ctx.redirect('/admin/login');
                 } else {
-                    ctx.body = '<h1>Page Not Found</h1>';
+
+					if ('/api'==ctx.originalUrl)
+					{
+						 ctx.redirect('/static/apidoc/index.html');
+
+						 return;
+					}
+
+                    ctx.redirect('/404.html');
+                    ctx.body = '<h1>Page Not Found</h1>'+ctx.originalUrl;
                 }
 
             }
