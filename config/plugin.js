@@ -25,14 +25,6 @@ exports.routerPlus = {
   package: 'egg-router-plus',
 };
 
-// doraBannerPluginBegin
-exports.doraBanner = {
-    enable: true,
-    package: 'egg-dora-banner',
-    path: path.join(__dirname, "../lib/plugin/egg-dora-banner")
-};
-// doraBannerPluginBegin
-
 // commerceBannersliderPluginBegin
 exports.commerceBannerslider = {
     enable: true,

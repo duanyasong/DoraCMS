@@ -46,7 +46,7 @@ export const bootstrap = [
 ];
 
 export function mount(props) {
-  console.log('bannersilder pros', props);
+  console.log('bannerslider pros', props);
   return vueLifecycles.mount(props);
 }
 

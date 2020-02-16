@@ -9,20 +9,20 @@
       @selection-change="handleSelectionChange"
     >
       <el-table-column type="selection" width="55"></el-table-column>
-      <el-table-column prop="name" :label="$t('bannersilder.name')" width="200"></el-table-column>
-      <el-table-column prop="type" :label="$t('bannersilder.type')" width="80">
+      <el-table-column prop="name" :label="$t('bannerslider.name')" width="200"></el-table-column>
+      <el-table-column prop="type" :label="$t('bannerslider.type')" width="80">
         <template slot-scope="scope">
-          <span v-if="scope.row.type == '0'">{{$t('bannersilder.typeText')}}</span>
-          <span v-if="scope.row.type == '1'">{{$t('bannersilder.typePic')}}</span>
+          <span v-if="scope.row.type == '0'">{{$t('bannerslider.typeText')}}</span>
+          <span v-if="scope.row.type == '1'">{{$t('bannerslider.typePic')}}</span>
         </template>
       </el-table-column>
-      <el-table-column prop="state" :label="$t('bannersilder.enable')" width="100" show-overflow-tooltip>
+      <el-table-column prop="state" :label="$t('bannerslider.enable')" width="100" show-overflow-tooltip>
         <template slot-scope="scope">
           <svg-icon v-show="scope.row.state" :style="green" icon-class="check-circle-fill" />
           <svg-icon v-show="!scope.row.state" :style="red" icon-class="minus-circle-fill" />
         </template>
       </el-table-column>
-      <el-table-column prop="comments" :label="$t('bannersilder.dis')" show-overflow-tooltip></el-table-column>
+      <el-table-column prop="comments" :label="$t('bannerslider.dis')" show-overflow-tooltip></el-table-column>
       <el-table-column :label="$t('main.dataTableOptions')" width="150">
         <template slot-scope="scope">
           <el-tooltip class="item" effect="dark" content="Get code" placement="top-start">
@@ -42,7 +42,7 @@
             type="primary"
             plain
             round
-            @click="editBannersilderInfo(scope.$index, dataList)"
+            @click="editBannersliderInfo(scope.$index, dataList)"
           >
             <svg-icon icon-class="edit" />
           </el-button>
@@ -51,7 +51,7 @@
             type="danger"
             plain
             round
-            @click="deleteBannersilder(scope.$index, dataList)"
+            @click="deleteBannerslider(scope.$index, dataList)"
           >
             <svg-icon icon-class="icon_delete" />
           </el-button>
@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { delBannersilder } from "@/api/bannersilder";
+import { delBannerslider } from "@/api/bannerslider";
 import clipboard from "@/directive/clipboard/index.js";
 
 export default {
@@ -82,11 +82,11 @@ export default {
   methods: {
     inputData(index, rows) {
       let targetRow = rows[index];
-      let bannersilderStr = `
-      {% remote key="${targetRow.name}",api="bannersilder/getOne",query='{"name":"${targetRow.name}"}' %}
-      {{bannersilderPannel.slider(${targetRow.name})}}
+      let bannersliderStr = `
+      {% remote key="${targetRow.name}",api="bannerslider/getOne",query='{"name":"${targetRow.name}"}' %}
+      {{bannersliderPannel.slider(${targetRow.name})}}
       `;
-      return bannersilderStr;
+      return bannersliderStr;
     },
     clipboardSuccess() {
       this.$message({
@@ -98,17 +98,17 @@ export default {
     handleSelectionChange(val) {
       this.multipleSelection = val;
     },
-    editBannersilderInfo(index, rows) {
+    editBannersliderInfo(index, rows) {
       let rowData = rows[index];
-      this.$store.dispatch("bannersilder/bannersilderInfoForm", {
+      this.$store.dispatch("bannerslider/bannersliderInfoForm", {
         edit: true,
         formData: rowData
       });
       this.$router.push(
-        this.$root.adminBasePath + "/bannersilder/editBannersilder/" + rowData._id
+        this.$root.adminBasePath + "/bannerslider/editBannerslider/" + rowData._id
       );
     },
-    deleteBannersilder(index, rows) {
+    deleteBannerslider(index, rows) {
       this.$confirm(
         this.$t("main.del_notice"),
         this.$t("main.scr_modal_title"),
@@ -119,13 +119,13 @@ export default {
         }
       )
         .then(() => {
-          return delBannersilder({
+          return delBannerslider({
             ids: rows[index]._id
           });
         })
         .then(result => {
           if (result.status === 200) {
-            this.$store.dispatch("bannersilder/getBannersilderList");
+            this.$store.dispatch("bannerslider/getBannersliderList");
             this.$message({
               message: this.$t("main.scr_modal_del_succes_info"),
               type: "success"

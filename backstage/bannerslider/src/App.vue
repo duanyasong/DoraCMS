@@ -1,5 +1,5 @@
 <template>
-  <div id="bannersilder-app">
+  <div id="bannerslider-app">
     <router-view />
   </div>
 </template>

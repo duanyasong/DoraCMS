@@ -1,11 +1,11 @@
 <template>
-  <div :class="classObj" class="bannersilder">
+  <div :class="classObj" class="bannerslider">
     <div class="main-container">
       <el-row class="dr-datatable">
         <el-col :span="24">
-          <TopBar type="bannersilder"></TopBar>
-          <DataTable :dataList="bannersilderList.docs"></DataTable>
-          <Pagination :device="device" :pageInfo="bannersilderList.pageInfo" pageType="bannersilder"></Pagination>
+          <TopBar type="bannerslider"></TopBar>
+          <DataTable :dataList="bannersliderList.docs"></DataTable>
+          <Pagination :device="device" :pageInfo="bannersliderList.pageInfo" pageType="bannerslider"></Pagination>
         </el-col>
       </el-row>
     </div>
@@ -35,9 +35,9 @@ export default {
   },
   methods: mapActions([]),
   computed: {
-    ...mapGetters(["bannersilderList"]),
+    ...mapGetters(["bannersliderList"]),
     formState() {
-      return this.$store.getters.bannersilderInfoForm;
+      return this.$store.getters.bannersliderInfoForm;
     },
     classObj() {
       return {
@@ -50,7 +50,7 @@ export default {
   },
   mounted() {
     initEvent(this);
-    this.$store.dispatch("bannersilder/getBannersilderList");
+    this.$store.dispatch("bannerslider/getBannersliderList");
   }
 };
 </script>

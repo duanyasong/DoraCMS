@@ -1,6 +1,6 @@
 const getters = {
-  bannersilderList: state => state.bannersilder.list,
-  bannersilderInfoForm: state => state.bannersilder.infoFormState,
-  bannersilderItemForm: state => state.bannersilder.itemFormState,
+  bannersliderList: state => state.bannerslider.list,
+  bannersliderInfoForm: state => state.bannerslider.infoFormState,
+  bannersliderItemForm: state => state.bannerslider.itemFormState,
 }
 export default getters

@@ -1,12 +1,12 @@
 export default {
-  bannersilder: {
-    name: "Bannersilder Name",
-    type: "Bannersilder Type",
+  bannerslider: {
+    name: "Bannerslider Name",
+    type: "Bannerslider Type",
     typeText: "letter",
     typePic: "pics",
     enable: "Enable",
     getCode: "Get the code",
-    dis: "Description for the Bannersilder",
+    dis: "Description for the Bannerslider",
     textLink: "Text Links",
     link: "Links",
     upload: "Upload",

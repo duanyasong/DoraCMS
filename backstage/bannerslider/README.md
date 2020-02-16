@@ -5,7 +5,7 @@
 npm install
 ```
 
-### Compiles and hot-relobannersilder for development
+### Compiles and hot-relobannerslider for development
 ```
 npm run serve
 ```

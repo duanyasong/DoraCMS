@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import settings from "@root/publicMethods/settings";
-import Bannersilder from '@/views/bannersilder'
+import Bannerslider from '@/views/bannerslider'
 
 Vue.use(Router)
 
@@ -12,17 +12,17 @@ const createRouter = () => new Router({
     y: 0
   }),
   routes: [{
-    path: settings.admin_base_path + '/bannersilder',
-    name: 'bannersilder',
-    component: Bannersilder
+    path: settings.admin_base_path + '/bannerslider',
+    name: 'bannerslider',
+    component: Bannerslider
   }, {
-    path: settings.admin_base_path + '/bannersilder/editBannersilder/:id',
-    name: 'editBannersilder',
-    component: () => import( /* webpackChunkName: "editBannersilder" */ '@/views/bannersilder/infoForm.vue')
+    path: settings.admin_base_path + '/bannerslider/editBannerslider/:id',
+    name: 'editBannerslider',
+    component: () => import( /* webpackChunkName: "editBannerslider" */ '@/views/bannerslider/infoForm.vue')
   }, {
-    path: settings.admin_base_path + '/bannersilder/addBannersilder',
-    name: 'addBannersilder',
-    component: () => import( /* webpackChunkName: "editBannersilder" */ '@/views/bannersilder/infoForm.vue')
+    path: settings.admin_base_path + '/bannerslider/addBannerslider',
+    name: 'addBannerslider',
+    component: () => import( /* webpackChunkName: "editBannerslider" */ '@/views/bannerslider/infoForm.vue')
   }]
 })
 

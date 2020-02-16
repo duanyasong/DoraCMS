@@ -6,12 +6,12 @@
       :md="6"
       :lg="6"
       :xl="6"
-      :title="(formState.edit?$t('main.modify'):$t('main.addNew'))+(bannersilderType == '1'?$t('bannersilder.typePic'):$t('bannersilder.textLink'))"
+      :title="(formState.edit?$t('main.modify'):$t('main.addNew'))+(bannersliderType == '1'?$t('bannerslider.typePic'):$t('bannerslider.textLink'))"
       :visible.sync="formState.show"
       :close-on-click-modal="false"
     >
       <el-form
-        v-if="bannersilderType == '1'"
+        v-if="bannersliderType == '1'"
         :model="formState.formData"
         :rules="rules"
         ref="ruleForm"
@@ -19,16 +19,16 @@
         class="demo-ruleForm"
         :label-position="device == 'mobile' ? 'top' : 'right'"
       >
-        <el-form-item :label="$t('bannersilder.dis')" prop="alt">
+        <el-form-item :label="$t('bannerslider.dis')" prop="alt">
           <el-input size="small" v-model="formState.formData.alt"></el-input>
         </el-form-item>
-        <el-form-item :label="$t('bannersilder.link')" prop="link">
+        <el-form-item :label="$t('bannerslider.link')" prop="link">
           <el-input size="small" v-model="formState.formData.link"></el-input>
         </el-form-item>
-        <el-form-item :label="$t('bannersilder.appLink')" prop="appLink">
+        <el-form-item :label="$t('bannerslider.appLink')" prop="appLink">
           <el-input size="small" v-model="formState.formData.appLink"></el-input>
         </el-form-item>
-        <el-form-item :label="$t('bannersilder.appLinkType')" prop="appLinkType">
+        <el-form-item :label="$t('bannerslider.appLinkType')" prop="appLinkType">
           <el-select v-model="formState.formData.appLinkType" placeholder="请选择app链接类型">
             <el-option
               v-for="item in linkTypeOpts"
@@ -38,7 +38,7 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item :label="$t('bannersilder.upload')" prop="sImg">
+        <el-form-item :label="$t('bannerslider.upload')" prop="sImg">
           <el-upload
             class="avatar-uploader"
             action="/api/upload/files"
@@ -60,17 +60,17 @@
         </el-form-item>
       </el-form>
       <el-form
-        v-if="bannersilderType == '0'"
+        v-if="bannersliderType == '0'"
         :model="formState.formData"
         :rules="rules1"
         ref="ruleForm1"
         label-width="80px"
         class="demo-ruleForm"
       >
-        <el-form-item :label="$t('bannersilder.textContent')" prop="title">
+        <el-form-item :label="$t('bannerslider.textContent')" prop="title">
           <el-input size="small" v-model="formState.formData.title"></el-input>
         </el-form-item>
-        <el-form-item :label="$t('bannersilder.link')" prop="link">
+        <el-form-item :label="$t('bannerslider.link')" prop="link">
           <el-input size="small" v-model="formState.formData.link"></el-input>
         </el-form-item>
         <el-form-item>
@@ -102,7 +102,7 @@ export default {
           {
             required: true,
             message: this.$t("validate.inputNull", {
-              label: this.$t("bannersilder.textContent")
+              label: this.$t("bannerslider.textContent")
             }),
             trigger: "blur"
           },
@@ -131,7 +131,7 @@ export default {
           {
             required: true,
             message: this.$t("validate.inputNull", {
-              label: this.$t("bannersilder.dis")
+              label: this.$t("bannerslider.dis")
             }),
             trigger: "blur"
           },
@@ -158,8 +158,8 @@ export default {
     };
   },
   computed: {
-    bannersilderType() {
-      return this.$store.getters.bannersilderInfoForm.formData.type;
+    bannersliderType() {
+      return this.$store.getters.bannersliderInfoForm.formData.type;
     }
   },
   methods: {
@@ -185,20 +185,20 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           let params = this.formState.formData;
-          let oldFormState = this.$store.getters.bannersilderInfoForm;
-          let bannersilderItems = oldFormState.formData.items;
+          let oldFormState = this.$store.getters.bannersliderInfoForm;
+          let bannersliderItems = oldFormState.formData.items;
           // 更新
           if (this.formState.edit) {
-            for (let i = 0; i < bannersilderItems.length; i++) {
-              if (bannersilderItems[i]._id == params._id) bannersilderItems[i] = params;
+            for (let i = 0; i < bannersliderItems.length; i++) {
+              if (bannersliderItems[i]._id == params._id) bannersliderItems[i] = params;
             }
-            this.$store.dispatch("bannersilder/bannersilderInfoForm", oldFormState);
+            this.$store.dispatch("bannerslider/bannersliderInfoForm", oldFormState);
           } else {
             // 新增
-            bannersilderItems.push(params);
-            this.$store.dispatch("bannersilder/bannersilderInfoForm", oldFormState);
+            bannersliderItems.push(params);
+            this.$store.dispatch("bannerslider/bannersliderInfoForm", oldFormState);
           }
-          this.$store.dispatch("bannersilder/hideBannersilderItemForm");
+          this.$store.dispatch("bannerslider/hideBannersliderItemForm");
         } else {
           console.log("error submit!!");
           return false;

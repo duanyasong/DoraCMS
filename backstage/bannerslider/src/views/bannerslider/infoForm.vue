@@ -1,7 +1,7 @@
 <template>
-  <div :class="classObj" class="dr-bannersilderInfoForm">
+  <div :class="classObj" class="dr-bannersliderInfoForm">
     <div class="main-container">
-      <ItemForm :device="device" :formState="bannersilderItemForm" />
+      <ItemForm :device="device" :formState="bannersliderItemForm" />
       <el-form
         :model="formState.formData"
         :rules="rules"
@@ -10,91 +10,91 @@
         class="demo-ruleForm"
         :label-position="device == 'mobile' ? 'top' : 'right'"
       >
-        <el-form-item :label="$t('bannersilder.name')" prop="name">
+        <el-form-item :label="$t('bannerslider.name')" prop="name">
           <el-input size="small" v-model="formState.formData.name"></el-input>
         </el-form-item>
-        <el-form-item v-if="!formState.edit" :label="$t('bannersilder.type')" prop="type">
+        <el-form-item v-if="!formState.edit" :label="$t('bannerslider.type')" prop="type">
           <el-radio-group v-model="formState.formData.type" @change="changeType">
-            <el-radio class="radio" label="0">{{$t('bannersilder.typeText')}}</el-radio>
-            <el-radio class="radio" label="1">{{$t('bannersilder.typePic')}}</el-radio>
+            <el-radio class="radio" label="0">{{$t('bannerslider.typeText')}}</el-radio>
+            <el-radio class="radio" label="1">{{$t('bannerslider.typePic')}}</el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item :label="$t('bannersilder.enable')" prop="state">
+        <el-form-item :label="$t('bannerslider.enable')" prop="state">
           <el-switch
             :on-text="$t('main.radioOn')"
             :off-text="$t('main.radioOff')"
             v-model="formState.formData.state"
           ></el-switch>
         </el-form-item>
-        <el-form-item :label="$t('bannersilder.comments')" prop="comments">
+        <el-form-item :label="$t('bannerslider.comments')" prop="comments">
           <el-input size="small" v-model="formState.formData.comments"></el-input>
         </el-form-item>
         <div v-if="formState.formData.type == '1'">
-          <el-form-item :label="$t('bannersilder.slider')" prop="carousel">
+          <el-form-item :label="$t('bannerslider.slider')" prop="carousel">
             <el-switch
               :on-text="$t('main.radioOn')"
               :off-text="$t('main.radioOff')"
               v-model="formState.formData.carousel"
             ></el-switch>
           </el-form-item>
-          <el-form-item :label="$t('bannersilder.showHeight')" prop="height">
+          <el-form-item :label="$t('bannerslider.showHeight')" prop="height">
             <el-input
               size="small"
               type="number"
               min="0"
               max="10"
               style="width:150px;"
-              :placeholder="$t('bannersilder.showHeight')"
+              :placeholder="$t('bannerslider.showHeight')"
               v-model="formState.formData.height"
             >
               <template slot="append">px</template>
             </el-input>
           </el-form-item>
-          <el-form-item :label="$t('bannersilder.imglist')" prop="items">
+          <el-form-item :label="$t('bannerslider.imglist')" prop="items">
             <el-button
               size="small"
               type="primary"
               plain
               round
-              @click="showBannersilderItemForm"
-            >{{$t('bannersilder.addImgItem')}}</el-button>
-            <div class="dr-bannersilder-item" v-for="item in formState.formData.items" :key="item._id">
+              @click="showBannersliderItemForm"
+            >{{$t('bannerslider.addImgItem')}}</el-button>
+            <div class="dr-bannerslider-item" v-for="item in formState.formData.items" :key="item._id">
               <div class="img">
                 <img :src="item.sImg" />
               </div>
               <div class="details">
                 <ul>
-                  <li>{{$t('bannersilder.imgAlt')}}：{{item.alt}}</li>
-                  <li>{{$t('bannersilder.imgLink')}}：{{item.link}}</li>
+                  <li>{{$t('bannerslider.imgAlt')}}：{{item.alt}}</li>
+                  <li>{{$t('bannerslider.imgLink')}}：{{item.link}}</li>
                 </ul>
               </div>
               <div class="options">
-                <el-button size="mini" type="primary" plain round @click="editBannersilderItemInfo(item)">
+                <el-button size="mini" type="primary" plain round @click="editBannersliderItemInfo(item)">
                   <svg-icon icon-class="edit" />
                 </el-button>
               </div>
-              <i class="el-icon-close" @click="deleteBannersilderItem(item)"></i>
+              <i class="el-icon-close" @click="deleteBannersliderItem(item)"></i>
             </div>
           </el-form-item>
         </div>
         <div v-if="formState.formData.type == '0'">
-          <el-form-item :label="$t('bannersilder.textList')" prop="items">
+          <el-form-item :label="$t('bannerslider.textList')" prop="items">
             <el-button
               size="small"
               type="primary"
               plain
               round
-              @click="showBannersilderItemForm"
-            >{{$t('bannersilder.addTextLink')}}</el-button>
+              @click="showBannersliderItemForm"
+            >{{$t('bannerslider.addTextLink')}}</el-button>
             <div v-if="formState.formData.items.length > 0">
               <el-tag
                 v-for="tag in formState.formData.items"
                 :key="tag.title"
                 type="gray"
                 :closable="true"
-                @close="deleteBannersilderItem(tag)"
+                @close="deleteBannersliderItem(tag)"
               >
-                <span @click="editBannersilderItemInfo(tag)">{{tag.title}}</span>
+                <span @click="editBannersliderItemInfo(tag)">{{tag.title}}</span>
               </el-tag>
             </div>
           </el-form-item>
@@ -112,7 +112,7 @@
   </div>
 </template>
 <script>
-import { updateBannersilder, addOneAd, getOneAd } from "@/api/bannersilder";
+import { updateBannerslider, addOneAd, getOneAd } from "@/api/bannerslider";
 import ItemForm from "./itemForm";
 import _ from "lodash";
 import { mapGetters, mapActions } from "vuex";
@@ -128,7 +128,7 @@ export default {
           {
             required: true,
             message: this.$t("validate.inputNull", {
-              label: this.$t("bannersilder.name")
+              label: this.$t("bannerslider.name")
             }),
             trigger: "blur"
           },
@@ -168,26 +168,26 @@ export default {
   },
   methods: {
     backToList() {
-      this.$router.push(this.$root.adminBasePath + "/bannersilder");
+      this.$router.push(this.$root.adminBasePath + "/bannerslider");
     },
     changeType(type) {},
-    showBannersilderItemForm() {
-      this.$store.dispatch("bannersilder/showBannersilderItemForm", { edit: false });
+    showBannersliderItemForm() {
+      this.$store.dispatch("bannerslider/showBannersliderItemForm", { edit: false });
     },
-    editBannersilderItemInfo(item) {
-      this.$store.dispatch("bannersilder/showBannersilderItemForm", {
+    editBannersliderItemInfo(item) {
+      this.$store.dispatch("bannerslider/showBannersliderItemForm", {
         edit: true,
         formData: item
       });
     },
-    deleteBannersilderItem(item) {
-      let oldFormState = this.$store.getters.bannersilderInfoForm;
-      let bannersilderItems = oldFormState.formData.items;
-      let newItems = _.filter(bannersilderItems, doc => {
+    deleteBannersliderItem(item) {
+      let oldFormState = this.$store.getters.bannersliderInfoForm;
+      let bannersliderItems = oldFormState.formData.items;
+      let newItems = _.filter(bannersliderItems, doc => {
         return doc._id != item._id;
       });
       oldFormState.formData.items = newItems;
-      this.$store.dispatch("bannersilder/bannersilderInfoForm", oldFormState);
+      this.$store.dispatch("bannerslider/bannersliderInfoForm", oldFormState);
     },
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
@@ -195,14 +195,14 @@ export default {
           let params = this.formState.formData;
           // 更新
           if (this.formState.edit) {
-            updateBannersilder(params).then(result => {
+            updateBannerslider(params).then(result => {
               if (result.status === 200) {
-                this.$store.dispatch("bannersilder/hideBannersilderItemForm");
+                this.$store.dispatch("bannerslider/hideBannersliderItemForm");
                 this.$message({
                   message: this.$t("main.updateSuccess"),
                   type: "success"
                 });
-                this.$router.push(this.$root.adminBasePath + "/bannersilder");
+                this.$router.push(this.$root.adminBasePath + "/bannerslider");
               } else {
                 this.$message.error(result.message);
               }
@@ -215,7 +215,7 @@ export default {
                   message: this.$t("main.addSuccess"),
                   type: "success"
                 });
-                this.$router.push(this.$root.adminBasePath + "/bannersilder");
+                this.$router.push(this.$root.adminBasePath + "/bannerslider");
               } else {
                 this.$message.error(result.message);
               }
@@ -229,9 +229,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["bannersilderItemForm"]),
+    ...mapGetters(["bannersliderItemForm"]),
     formState() {
-      return this.$store.getters.bannersilderInfoForm;
+      return this.$store.getters.bannersliderInfoForm;
     },
     classObj() {
       return {
@@ -249,7 +249,7 @@ export default {
       getOneAd(this.$route.params).then(result => {
         if (result.status === 200) {
           if (result.data) {
-            this.$store.dispatch("bannersilder/bannersilderInfoForm", {
+            this.$store.dispatch("bannerslider/bannersliderInfoForm", {
               edit: true,
               formData: result.data
             });
@@ -258,7 +258,7 @@ export default {
               message: this.$t("validate.error_params"),
               type: "warning",
               onClose: () => {
-                this.$router.push(this.$root.adminBasePath + "/bannersilder");
+                this.$router.push(this.$root.adminBasePath + "/bannerslider");
               }
             });
           }
@@ -271,14 +271,14 @@ export default {
 };
 </script>
 <style lang="scss">
-.dr-bannersilderInfoForm {
+.dr-bannersliderInfoForm {
   margin-top: 30px;
 }
 .el-tag {
   margin-right: 15px;
 }
 
-.dr-bannersilder-item {
+.dr-bannerslider-item {
   color: #48576a;
   border-radius: 4px;
   border: 1px solid #bfcbd9;

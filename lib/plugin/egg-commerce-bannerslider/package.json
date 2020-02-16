@@ -1,9 +1,9 @@
 {
-  "name": "egg-commerce-bannersilder",
+  "name": "egg-commerce-bannerslider",
   "version": "1.0.7",
-  "description": "bannersilder",
+  "description": "bannerslider",
   "eggPlugin": {
-    "name": "commerceBannersilder"
+    "name": "commerceBannerslider"
   },
   "keywords": [
     "egg",
@@ -49,12 +49,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/duanyasong/egg-commerce-bannersilder.git"
+    "url": "git+https://github.com/duanyasong/egg-commerce-bannerslider.git"
   },
   "bugs": {
-    "url": "https://github.com/duanyasong/egg-commerce-bannersilder/issues"
+    "url": "https://github.com/duanyasong/egg-commerce-bannerslider/issues"
   },
-  "homepage": "https://github.com/duanyasong/egg-commerce-bannersilder#readme",
+  "homepage": "https://github.com/duanyasong/egg-commerce-bannerslider#readme",
   "author": "duanyasong",
   "license": "MIT"
 }

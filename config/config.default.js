@@ -131,13 +131,6 @@ module.exports = appInfo => {
     // commerceBannersliderPluginBegin
 
 
-    // doraBannerPluginBegin
-    bannerRouter: {
-      match: [ctx => ctx.path.startsWith('/manage/banner'), ctx => ctx.path.startsWith('/api/banner')],
-    },
-    // doraBannerPluginBegin
-
-
     // doraAnnouncePluginBegin
     announceRouter: {
       match: [ctx => ctx.path.startsWith('/manage/systemAnnounce')],

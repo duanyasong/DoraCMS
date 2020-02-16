@@ -1,1 +1,1 @@
-__webpack_public_path__ = window.getPublicPath('bannersilder')
+__webpack_public_path__ = window.getPublicPath('bannerslider')

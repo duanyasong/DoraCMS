@@ -1,7 +1,7 @@
 import * as types from '../types.js';
 import {
-  getBannersilderList,
-} from '@/api/bannersilder';
+  getBannersliderList,
+} from '@/api/bannerslider';
 import _ from 'lodash';
 
 const state = {
@@ -69,14 +69,14 @@ const mutations = {
 
 const actions = {
 
-  getBannersilderList({
+  getBannersliderList({
     commit
   }, params = {}) {
-    getBannersilderList(params).then((result) => {
+    getBannersliderList(params).then((result) => {
       commit(types.BANNERSILDER_LIST, result.data)
     })
   },
-  bannersilderInfoForm: ({
+  bannersliderInfoForm: ({
     commit
   }, params = {}) => {
     commit(types.BANNERSILDER_INFO_FORMSTATE, {
@@ -84,7 +84,7 @@ const actions = {
       formData: params.formData
     })
   },
-  showBannersilderItemForm: ({
+  showBannersliderItemForm: ({
     commit
   }, params = {
     edit: false,
@@ -96,7 +96,7 @@ const actions = {
       formData: params.formData
     })
   },
-  hideBannersilderItemForm: ({
+  hideBannersliderItemForm: ({
     commit
   }) => {
     commit(types.BANNERSILDER_ITEM_FORMSTATE, {

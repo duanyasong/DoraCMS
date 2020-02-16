@@ -1,8 +1,8 @@
 import request from '@root/publicMethods/request'
 
-export function getBannersilderList(params) {
+export function getBannersliderList(params) {
   return request({
-    url: '/manage/bannersilder/getList',
+    url: '/manage/bannerslider/getList',
     method: 'get',
     params
   })
@@ -10,7 +10,7 @@ export function getBannersilderList(params) {
 
 export function getOneAd(params) {
   return request({
-    url: '/manage/bannersilder/getOne',
+    url: '/manage/bannerslider/getOne',
     method: 'get',
     params
   })
@@ -18,23 +18,23 @@ export function getOneAd(params) {
 
 export function addOneAd(data) {
   return request({
-    url: '/manage/bannersilder/addOne',
+    url: '/manage/bannerslider/addOne',
     method: 'post',
     data
   })
 }
 
-export function updateBannersilder(data) {
+export function updateBannerslider(data) {
   return request({
-    url: '/manage/bannersilder/updateOne',
+    url: '/manage/bannerslider/updateOne',
     method: 'post',
     data
   })
 }
 
-export function delBannersilder(params) {
+export function delBannerslider(params) {
   return request({
-    url: '/manage/bannersilder/delete',
+    url: '/manage/bannerslider/delete',
     method: 'get',
     params
   })

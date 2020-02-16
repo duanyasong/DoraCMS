@@ -45,7 +45,7 @@ export default {
       let state = this.pageInfo ? this.pageInfo.state : "";
       let user = this.pageInfo ? this.pageInfo.user : "";
       let targetCurrent = current;
-      this.$store.dispatch("bannersilder/getBannersilderList", {
+      this.$store.dispatch("bannerslider/getBannersliderList", {
         current: targetCurrent,
         pageSize,
         searchkey

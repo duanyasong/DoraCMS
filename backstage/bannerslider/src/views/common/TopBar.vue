@@ -1,7 +1,7 @@
 <template>
   <div class="dr-toolbar">
     <div class="option-button el-col-6">
-      <el-button type="primary" size="small" plain round @click="addBannersilder">
+      <el-button type="primary" size="small" plain round @click="addBannerslider">
         <svg-icon icon-class="icon_add" />
       </el-button>
       <!-- TOPBARLEFT -->
@@ -24,12 +24,12 @@ export default {
     };
   },
   methods: {
-    addBannersilder() {
-      this.$store.dispatch("bannersilder/bannersilderInfoForm", {
+    addBannerslider() {
+      this.$store.dispatch("bannerslider/bannersliderInfoForm", {
         edit: false,
         formData: {}
       });
-      this.$router.push(this.$root.adminBasePath + "/bannersilder/addBannersilder");
+      this.$router.push(this.$root.adminBasePath + "/bannerslider/addBannerslider");
     }
 
     // TOPBARLEFTOPTION
