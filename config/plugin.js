@@ -33,6 +33,15 @@ exports.doraBanner = {
 };
 // doraBannerPluginBegin
 
+// doraBannersilderPluginBegin
+exports.doraBannersilder = {
+    enable: true,
+    package: 'egg-commerce-bannersilder',
+    path: path.join(__dirname, "../lib/plugin/egg-commerce-bannersilder")
+};
+// doraBannersilderPluginBegin
+
+
 exports.doraBackUpData = {
     enable: true,
     package: 'egg-dora-backupdata',
