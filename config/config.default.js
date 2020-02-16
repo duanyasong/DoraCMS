@@ -124,11 +124,11 @@ module.exports = appInfo => {
     },
     // doraAdsPluginEnd
 
-    // commerceBannersilderPluginBegin
-    bannersilderRouter: {
-      match: [ctx => ctx.path.startsWith('/manage/bannersilder'), ctx => ctx.path.startsWith('/api/bannersilder')],
+    // commerceBannersliderPluginBegin
+    bannersliderRouter: {
+      match: [ctx => ctx.path.startsWith('/manage/bannerslider'), ctx => ctx.path.startsWith('/api/bannerslider')],
     },
-    // commerceBannersilderPluginBegin
+    // commerceBannersliderPluginBegin
 
 
     // doraBannerPluginBegin
