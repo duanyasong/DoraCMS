@@ -130,6 +130,12 @@ module.exports = appInfo => {
     },
     // commerceBannersliderPluginBegin
 
+    // commerceCustomergroupsPluginBegin
+    customergroupRouter: {
+      match: [ctx => ctx.path.startsWith('/manage/customergroup'), ctx => ctx.path.startsWith('/api/customergroup')],
+    },
+    // commerceCustomergroupsPluginBegin
+
 
     // doraAnnouncePluginBegin
     announceRouter: {

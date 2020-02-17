@@ -34,6 +34,15 @@ exports.commerceBannerslider = {
 // commerceBannersliderPluginBegin
 
 
+// commerceCustomergroupsPluginBegin
+exports.commerceCustomergroups = {
+    enable: true,
+    package: 'egg-commerce-customergroups',
+    path: path.join(__dirname, "../lib/plugin/egg-commerce-customergroups")
+};
+// commerceCustomergroupsPluginEnd
+
+
 exports.doraBackUpData = {
     enable: true,
     package: 'egg-dora-backupdata',
