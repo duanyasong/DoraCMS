@@ -34,6 +34,16 @@ exports.commerceBannerslider = {
 // commerceBannersliderPluginBegin
 
 
+
+// commerceCustomerPluginBegin
+exports.commerceCustomer = {
+    enable: true,
+    package: 'egg-commerce-customer',
+    path: path.join(__dirname, "../lib/plugin/egg-commerce-customer")
+};
+// commerceCustomerPluginEnd
+
+
 // commerceCustomergroupsPluginBegin
 exports.commerceCustomergroups = {
     enable: true,
