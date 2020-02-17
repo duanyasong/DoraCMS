@@ -9,20 +9,20 @@
       @selection-change="handleSelectionChange"
     >
       <el-table-column type="selection" width="55"></el-table-column>
-      <el-table-column prop="name" :label="$t('ads.name')" width="200"></el-table-column>
-      <el-table-column prop="type" :label="$t('ads.type')" width="80">
+      <el-table-column prop="name" :label="$t('customer.name')" width="200"></el-table-column>
+      <el-table-column prop="type" :label="$t('customer.type')" width="80">
         <template slot-scope="scope">
-          <span v-if="scope.row.type == '0'">{{$t('ads.typeText')}}</span>
-          <span v-if="scope.row.type == '1'">{{$t('ads.typePic')}}</span>
+          <span v-if="scope.row.type == '0'">{{$t('customer.typeText')}}</span>
+          <span v-if="scope.row.type == '1'">{{$t('customer.typePic')}}</span>
         </template>
       </el-table-column>
-      <el-table-column prop="state" :label="$t('ads.enable')" width="100" show-overflow-tooltip>
+      <el-table-column prop="state" :label="$t('customer.enable')" width="100" show-overflow-tooltip>
         <template slot-scope="scope">
           <svg-icon v-show="scope.row.state" :style="green" icon-class="check-circle-fill" />
           <svg-icon v-show="!scope.row.state" :style="red" icon-class="minus-circle-fill" />
         </template>
       </el-table-column>
-      <el-table-column prop="comments" :label="$t('ads.dis')" show-overflow-tooltip></el-table-column>
+      <el-table-column prop="comments" :label="$t('customer.dis')" show-overflow-tooltip></el-table-column>
       <el-table-column :label="$t('main.dataTableOptions')" width="150">
         <template slot-scope="scope">
           <el-tooltip class="item" effect="dark" content="Get code" placement="top-start">
@@ -42,7 +42,7 @@
             type="primary"
             plain
             round
-            @click="editAdsInfo(scope.$index, dataList)"
+            @click="editCustomerInfo(scope.$index, dataList)"
           >
             <svg-icon icon-class="edit" />
           </el-button>
@@ -51,7 +51,7 @@
             type="danger"
             plain
             round
-            @click="deleteAds(scope.$index, dataList)"
+            @click="deleteCustomer(scope.$index, dataList)"
           >
             <svg-icon icon-class="icon_delete" />
           </el-button>
@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { delAds } from "@/api/ads";
+import { delCustomer } from "@/api/customer";
 import clipboard from "@/directive/clipboard/index.js";
 
 export default {
@@ -82,11 +82,11 @@ export default {
   methods: {
     inputData(index, rows) {
       let targetRow = rows[index];
-      let adsStr = `
-      {% remote key="${targetRow.name}",api="ads/getOne",query='{"name":"${targetRow.name}"}' %}
-      {{adsPannel.slider(${targetRow.name})}}
+      let customerStr = `
+      {% remote key="${targetRow.name}",api="customer/getOne",query='{"name":"${targetRow.name}"}' %}
+      {{customerPannel.slider(${targetRow.name})}}
       `;
-      return adsStr;
+      return customerStr;
     },
     clipboardSuccess() {
       this.$message({
@@ -98,17 +98,17 @@ export default {
     handleSelectionChange(val) {
       this.multipleSelection = val;
     },
-    editAdsInfo(index, rows) {
+    editCustomerInfo(index, rows) {
       let rowData = rows[index];
-      this.$store.dispatch("ads/adsInfoForm", {
+      this.$store.dispatch("customer/customerInfoForm", {
         edit: true,
         formData: rowData
       });
       this.$router.push(
-        this.$root.adminBasePath + "/ads/editAds/" + rowData._id
+        this.$root.adminBasePath + "/customer/editCustomer/" + rowData._id
       );
     },
-    deleteAds(index, rows) {
+    deleteCustomer(index, rows) {
       this.$confirm(
         this.$t("main.del_notice"),
         this.$t("main.scr_modal_title"),
@@ -119,13 +119,13 @@ export default {
         }
       )
         .then(() => {
-          return delAds({
+          return delCustomer({
             ids: rows[index]._id
           });
         })
         .then(result => {
           if (result.status === 200) {
-            this.$store.dispatch("ads/getAdsList");
+            this.$store.dispatch("customer/getCustomerList");
             this.$message({
               message: this.$t("main.scr_modal_del_succes_info"),
               type: "success"

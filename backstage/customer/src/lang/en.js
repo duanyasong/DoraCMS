@@ -1,12 +1,12 @@
 export default {
-  ads: {
-    name: "Ads Name",
-    type: "Ads Type",
+  customer: {
+    name: "Customer Name",
+    type: "Customer Type",
     typeText: "letter",
     typePic: "pics",
     enable: "Enable",
     getCode: "Get the code",
-    dis: "Description for the Ads",
+    dis: "Description for the Customer",
     textLink: "Text Links",
     link: "Links",
     upload: "Upload",

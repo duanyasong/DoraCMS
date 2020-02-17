@@ -45,7 +45,7 @@ export default {
       let state = this.pageInfo ? this.pageInfo.state : "";
       let user = this.pageInfo ? this.pageInfo.user : "";
       let targetCurrent = current;
-      this.$store.dispatch("ads/getAdsList", {
+      this.$store.dispatch("customer/getCustomerList", {
         current: targetCurrent,
         pageSize,
         searchkey

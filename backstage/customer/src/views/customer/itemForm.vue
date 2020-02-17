@@ -6,12 +6,12 @@
       :md="6"
       :lg="6"
       :xl="6"
-      :title="(formState.edit?$t('main.modify'):$t('main.addNew'))+(adsType == '1'?$t('ads.typePic'):$t('ads.textLink'))"
+      :title="(formState.edit?$t('main.modify'):$t('main.addNew'))+(customerType == '1'?$t('customer.typePic'):$t('customer.textLink'))"
       :visible.sync="formState.show"
       :close-on-click-modal="false"
     >
       <el-form
-        v-if="adsType == '1'"
+        v-if="customerType == '1'"
         :model="formState.formData"
         :rules="rules"
         ref="ruleForm"
@@ -19,16 +19,16 @@
         class="demo-ruleForm"
         :label-position="device == 'mobile' ? 'top' : 'right'"
       >
-        <el-form-item :label="$t('ads.dis')" prop="alt">
+        <el-form-item :label="$t('customer.dis')" prop="alt">
           <el-input size="small" v-model="formState.formData.alt"></el-input>
         </el-form-item>
-        <el-form-item :label="$t('ads.link')" prop="link">
+        <el-form-item :label="$t('customer.link')" prop="link">
           <el-input size="small" v-model="formState.formData.link"></el-input>
         </el-form-item>
-        <el-form-item :label="$t('ads.appLink')" prop="appLink">
+        <el-form-item :label="$t('customer.appLink')" prop="appLink">
           <el-input size="small" v-model="formState.formData.appLink"></el-input>
         </el-form-item>
-        <el-form-item :label="$t('ads.appLinkType')" prop="appLinkType">
+        <el-form-item :label="$t('customer.appLinkType')" prop="appLinkType">
           <el-select v-model="formState.formData.appLinkType" placeholder="请选择app链接类型">
             <el-option
               v-for="item in linkTypeOpts"
@@ -38,7 +38,7 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item :label="$t('ads.upload')" prop="sImg">
+        <el-form-item :label="$t('customer.upload')" prop="sImg">
           <el-upload
             class="avatar-uploader"
             action="/api/upload/files"
@@ -60,17 +60,17 @@
         </el-form-item>
       </el-form>
       <el-form
-        v-if="adsType == '0'"
+        v-if="customerType == '0'"
         :model="formState.formData"
         :rules="rules1"
         ref="ruleForm1"
         label-width="80px"
         class="demo-ruleForm"
       >
-        <el-form-item :label="$t('ads.textContent')" prop="title">
+        <el-form-item :label="$t('customer.textContent')" prop="title">
           <el-input size="small" v-model="formState.formData.title"></el-input>
         </el-form-item>
-        <el-form-item :label="$t('ads.link')" prop="link">
+        <el-form-item :label="$t('customer.link')" prop="link">
           <el-input size="small" v-model="formState.formData.link"></el-input>
         </el-form-item>
         <el-form-item>
@@ -102,7 +102,7 @@ export default {
           {
             required: true,
             message: this.$t("validate.inputNull", {
-              label: this.$t("ads.textContent")
+              label: this.$t("customer.textContent")
             }),
             trigger: "blur"
           },
@@ -131,7 +131,7 @@ export default {
           {
             required: true,
             message: this.$t("validate.inputNull", {
-              label: this.$t("ads.dis")
+              label: this.$t("customer.dis")
             }),
             trigger: "blur"
           },
@@ -158,8 +158,8 @@ export default {
     };
   },
   computed: {
-    adsType() {
-      return this.$store.getters.adsInfoForm.formData.type;
+    customerType() {
+      return this.$store.getters.customerInfoForm.formData.type;
     }
   },
   methods: {
@@ -185,20 +185,20 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           let params = this.formState.formData;
-          let oldFormState = this.$store.getters.adsInfoForm;
+          let oldFormState = this.$store.getters.customerInfoForm;
           let addresses = oldFormState.formData.items;
           // 更新
           if (this.formState.edit) {
             for (let i = 0; i < addresses.length; i++) {
               if (addresses[i]._id == params._id) addresses[i] = params;
             }
-            this.$store.dispatch("ads/adsInfoForm", oldFormState);
+            this.$store.dispatch("customer/customerInfoForm", oldFormState);
           } else {
             // 新增
             addresses.push(params);
-            this.$store.dispatch("ads/adsInfoForm", oldFormState);
+            this.$store.dispatch("customer/customerInfoForm", oldFormState);
           }
-          this.$store.dispatch("ads/hideAddressForm");
+          this.$store.dispatch("customer/hideAddressForm");
         } else {
           console.log("error submit!!");
           return false;

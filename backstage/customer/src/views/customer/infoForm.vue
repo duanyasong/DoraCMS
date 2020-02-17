@@ -1,5 +1,5 @@
 <template>
-  <div :class="classObj" class="dr-adsInfoForm">
+  <div :class="classObj" class="dr-customerInfoForm">
     <div class="main-container">
       <ItemForm :device="device" :formState="addressForm" />
       <el-form
@@ -10,62 +10,62 @@
         class="demo-ruleForm"
         :label-position="device == 'mobile' ? 'top' : 'right'"
       >
-        <el-form-item :label="$t('ads.name')" prop="name">
+        <el-form-item :label="$t('customer.name')" prop="name">
           <el-input size="small" v-model="formState.formData.name"></el-input>
         </el-form-item>
-        <el-form-item v-if="!formState.edit" :label="$t('ads.type')" prop="type">
+        <el-form-item v-if="!formState.edit" :label="$t('customer.type')" prop="type">
           <el-radio-group v-model="formState.formData.type" @change="changeType">
-            <el-radio class="radio" label="0">{{$t('ads.typeText')}}</el-radio>
-            <el-radio class="radio" label="1">{{$t('ads.typePic')}}</el-radio>
+            <el-radio class="radio" label="0">{{$t('customer.typeText')}}</el-radio>
+            <el-radio class="radio" label="1">{{$t('customer.typePic')}}</el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item :label="$t('ads.enable')" prop="state">
+        <el-form-item :label="$t('customer.enable')" prop="state">
           <el-switch
             :on-text="$t('main.radioOn')"
             :off-text="$t('main.radioOff')"
             v-model="formState.formData.state"
           ></el-switch>
         </el-form-item>
-        <el-form-item :label="$t('ads.comments')" prop="comments">
+        <el-form-item :label="$t('customer.comments')" prop="comments">
           <el-input size="small" v-model="formState.formData.comments"></el-input>
         </el-form-item>
         <div v-if="formState.formData.type == '1'">
-          <el-form-item :label="$t('ads.slider')" prop="carousel">
+          <el-form-item :label="$t('customer.slider')" prop="carousel">
             <el-switch
               :on-text="$t('main.radioOn')"
               :off-text="$t('main.radioOff')"
               v-model="formState.formData.carousel"
             ></el-switch>
           </el-form-item>
-          <el-form-item :label="$t('ads.showHeight')" prop="height">
+          <el-form-item :label="$t('customer.showHeight')" prop="height">
             <el-input
               size="small"
               type="number"
               min="0"
               max="10"
               style="width:150px;"
-              :placeholder="$t('ads.showHeight')"
+              :placeholder="$t('customer.showHeight')"
               v-model="formState.formData.height"
             >
               <template slot="append">px</template>
             </el-input>
           </el-form-item>
-          <el-form-item :label="$t('ads.imglist')" prop="items">
+          <el-form-item :label="$t('customer.imglist')" prop="items">
             <el-button
               size="small"
               type="primary"
               plain
               round
               @click="showAddressForm"
-            >{{$t('ads.addImgItem')}}</el-button>
-            <div class="dr-ads-item" v-for="item in formState.formData.items" :key="item._id">
+            >{{$t('customer.addImgItem')}}</el-button>
+            <div class="dr-customer-item" v-for="item in formState.formData.items" :key="item._id">
               <div class="img">
                 <img :src="item.sImg" />
               </div>
               <div class="details">
                 <ul>
-                  <li>{{$t('ads.imgAlt')}}：{{item.alt}}</li>
-                  <li>{{$t('ads.imgLink')}}：{{item.link}}</li>
+                  <li>{{$t('customer.imgAlt')}}：{{item.alt}}</li>
+                  <li>{{$t('customer.imgLink')}}：{{item.link}}</li>
                 </ul>
               </div>
               <div class="options">
@@ -78,14 +78,14 @@
           </el-form-item>
         </div>
         <div v-if="formState.formData.type == '0'">
-          <el-form-item :label="$t('ads.textList')" prop="items">
+          <el-form-item :label="$t('customer.textList')" prop="items">
             <el-button
               size="small"
               type="primary"
               plain
               round
               @click="showAddressForm"
-            >{{$t('ads.addTextLink')}}</el-button>
+            >{{$t('customer.addTextLink')}}</el-button>
             <div v-if="formState.formData.items.length > 0">
               <el-tag
                 v-for="tag in formState.formData.items"
@@ -112,7 +112,7 @@
   </div>
 </template>
 <script>
-import { updateAds, addOneAd, getOneAd } from "@/api/ads";
+import { updateCustomer, addOneAd, getOneAd } from "@/api/customer";
 import ItemForm from "./itemForm";
 import _ from "lodash";
 import { mapGetters, mapActions } from "vuex";
@@ -128,7 +128,7 @@ export default {
           {
             required: true,
             message: this.$t("validate.inputNull", {
-              label: this.$t("ads.name")
+              label: this.$t("customer.name")
             }),
             trigger: "blur"
           },
@@ -168,26 +168,26 @@ export default {
   },
   methods: {
     backToList() {
-      this.$router.push(this.$root.adminBasePath + "/ads");
+      this.$router.push(this.$root.adminBasePath + "/customer");
     },
     changeType(type) {},
     showAddressForm() {
-      this.$store.dispatch("ads/showAddressForm", { edit: false });
+      this.$store.dispatch("customer/showAddressForm", { edit: false });
     },
     editAddressInfo(item) {
-      this.$store.dispatch("ads/showAddressForm", {
+      this.$store.dispatch("customer/showAddressForm", {
         edit: true,
         formData: item
       });
     },
     deleteAddress(item) {
-      let oldFormState = this.$store.getters.adsInfoForm;
+      let oldFormState = this.$store.getters.customerInfoForm;
       let addresses = oldFormState.formData.items;
       let newItems = _.filter(addresses, doc => {
         return doc._id != item._id;
       });
       oldFormState.formData.items = newItems;
-      this.$store.dispatch("ads/adsInfoForm", oldFormState);
+      this.$store.dispatch("customer/customerInfoForm", oldFormState);
     },
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
@@ -195,14 +195,14 @@ export default {
           let params = this.formState.formData;
           // 更新
           if (this.formState.edit) {
-            updateAds(params).then(result => {
+            updateCustomer(params).then(result => {
               if (result.status === 200) {
-                this.$store.dispatch("ads/hideAddressForm");
+                this.$store.dispatch("customer/hideAddressForm");
                 this.$message({
                   message: this.$t("main.updateSuccess"),
                   type: "success"
                 });
-                this.$router.push(this.$root.adminBasePath + "/ads");
+                this.$router.push(this.$root.adminBasePath + "/customer");
               } else {
                 this.$message.error(result.message);
               }
@@ -215,7 +215,7 @@ export default {
                   message: this.$t("main.addSuccess"),
                   type: "success"
                 });
-                this.$router.push(this.$root.adminBasePath + "/ads");
+                this.$router.push(this.$root.adminBasePath + "/customer");
               } else {
                 this.$message.error(result.message);
               }
@@ -231,7 +231,7 @@ export default {
   computed: {
     ...mapGetters(["addressForm"]),
     formState() {
-      return this.$store.getters.adsInfoForm;
+      return this.$store.getters.customerInfoForm;
     },
     classObj() {
       return {
@@ -249,7 +249,7 @@ export default {
       getOneAd(this.$route.params).then(result => {
         if (result.status === 200) {
           if (result.data) {
-            this.$store.dispatch("ads/adsInfoForm", {
+            this.$store.dispatch("customer/customerInfoForm", {
               edit: true,
               formData: result.data
             });
@@ -258,7 +258,7 @@ export default {
               message: this.$t("validate.error_params"),
               type: "warning",
               onClose: () => {
-                this.$router.push(this.$root.adminBasePath + "/ads");
+                this.$router.push(this.$root.adminBasePath + "/customer");
               }
             });
           }
@@ -271,14 +271,14 @@ export default {
 };
 </script>
 <style lang="scss">
-.dr-adsInfoForm {
+.dr-customerInfoForm {
   margin-top: 30px;
 }
 .el-tag {
   margin-right: 15px;
 }
 
-.dr-ads-item {
+.dr-customer-item {
   color: #48576a;
   border-radius: 4px;
   border: 1px solid #bfcbd9;

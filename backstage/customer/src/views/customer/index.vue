@@ -1,11 +1,11 @@
 <template>
-  <div :class="classObj" class="ads">
+  <div :class="classObj" class="customer">
     <div class="main-container">
       <el-row class="dr-datatable">
         <el-col :span="24">
-          <TopBar type="ads"></TopBar>
-          <DataTable :dataList="adsList.docs"></DataTable>
-          <Pagination :device="device" :pageInfo="adsList.pageInfo" pageType="ads"></Pagination>
+          <TopBar type="customer"></TopBar>
+          <DataTable :dataList="customerList.docs"></DataTable>
+          <Pagination :device="device" :pageInfo="customerList.pageInfo" pageType="customer"></Pagination>
         </el-col>
       </el-row>
     </div>
@@ -35,9 +35,9 @@ export default {
   },
   methods: mapActions([]),
   computed: {
-    ...mapGetters(["adsList"]),
+    ...mapGetters(["customerList"]),
     formState() {
-      return this.$store.getters.adsInfoForm;
+      return this.$store.getters.customerInfoForm;
     },
     classObj() {
       return {
@@ -50,7 +50,7 @@ export default {
   },
   mounted() {
     initEvent(this);
-    this.$store.dispatch("ads/getAdsList");
+    this.$store.dispatch("customer/getCustomerList");
   }
 };
 </script>

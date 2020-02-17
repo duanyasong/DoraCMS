@@ -1,7 +1,7 @@
 import * as types from '../types.js';
 import {
-  getAdsList,
-} from '@/api/ads';
+  getCustomerList,
+} from '@/api/customer';
 import _ from 'lodash';
 
 const state = {
@@ -38,10 +38,10 @@ const state = {
 }
 
 const mutations = {
-  [types.ADS_LIST](state, list) {
+  [types.CUSTOMER_LIST](state, list) {
     state.list = list
   },
-  [types.ADS_INFO_FORMSTATE](state, formState) {
+  [types.CUSTOMER_INFO_FORMSTATE](state, formState) {
     state.infoFormState.edit = formState.edit;
     state.infoFormState.formData = Object.assign({
       name: '',
@@ -53,7 +53,7 @@ const mutations = {
       carousel: true
     }, formState.formData);
   },
-  [types.ADS_ITEM_FORMSTATE](state, formState) {
+  [types.CUSTOMER_ITEM_FORMSTATE](state, formState) {
     state.itemFormState.edit = formState.edit;
     state.itemFormState.show = formState.show;
     state.itemFormState.formData = Object.assign({
@@ -69,17 +69,17 @@ const mutations = {
 
 const actions = {
 
-  getAdsList({
+  getCustomerList({
     commit
   }, params = {}) {
-    getAdsList(params).then((result) => {
-      commit(types.ADS_LIST, result.data)
+    getCustomerList(params).then((result) => {
+      commit(types.CUSTOMER_LIST, result.data)
     })
   },
-  adsInfoForm: ({
+  customerInfoForm: ({
     commit
   }, params = {}) => {
-    commit(types.ADS_INFO_FORMSTATE, {
+    commit(types.CUSTOMER_INFO_FORMSTATE, {
       edit: params.edit,
       formData: params.formData
     })
@@ -90,7 +90,7 @@ const actions = {
     edit: false,
     formData: {}
   }) => {
-    commit(types.ADS_ITEM_FORMSTATE, {
+    commit(types.CUSTOMER_ITEM_FORMSTATE, {
       show: true,
       edit: params.edit,
       formData: params.formData
@@ -99,7 +99,7 @@ const actions = {
   hideAddressForm: ({
     commit
   }) => {
-    commit(types.ADS_ITEM_FORMSTATE, {
+    commit(types.CUSTOMER_ITEM_FORMSTATE, {
       show: false
     })
   },
