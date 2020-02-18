@@ -136,6 +136,13 @@ module.exports = appInfo => {
     },
     // commerceCustomerPluginBegin
 
+
+    // commerceCategoryPluginBegin
+    categoryRouter: {
+      match: [ctx => ctx.path.startsWith('/manage/category'), ctx => ctx.path.startsWith('/api/category')],
+    },
+    // commerceCategoryPluginBegin
+
     // commerceCustomergroupsPluginBegin
     customergroupRouter: {
       match: [ctx => ctx.path.startsWith('/manage/customergroup'), ctx => ctx.path.startsWith('/api/customergroup')],

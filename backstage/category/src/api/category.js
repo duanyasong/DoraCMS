@@ -1,40 +1,40 @@
 import request from '@root/publicMethods/request'
 
-export function contentCategoryList(params) {
+export function categoryList(params) {
   return request({
-    url: '/manage/contentCategory/getList',
+    url: '/manage/category/getList',
     params,
     method: 'get'
   })
 }
 
-export function getOneContentCategory(params) {
+export function getOneCategory(params) {
   return request({
-    url: '/manage/contentCategory/getOne',
+    url: '/manage/category/getOne',
     params,
     method: 'get'
   })
 }
 
-export function addContentCategory(data) {
+export function addCategory(data) {
   return request({
-    url: '/manage/contentCategory/addOne',
+    url: '/manage/category/addOne',
     data,
     method: 'post'
   })
 }
 
-export function updateContentCategory(data) {
+export function updateCategory(data) {
   return request({
-    url: '/manage/contentCategory/updateOne',
+    url: '/manage/category/updateOne',
     data,
     method: 'post'
   })
 }
 
-export function deleteContentCategory(params) {
+export function deleteCategory(params) {
   return request({
-    url: '/manage/contentCategory/deleteCategory',
+    url: '/manage/category/deleteCategory',
     params,
     method: 'get'
   })

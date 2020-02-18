@@ -1,1 +1,1 @@
-__webpack_public_path__ = window.getPublicPath('contentCategory')
+__webpack_public_path__ = window.getPublicPath('category')

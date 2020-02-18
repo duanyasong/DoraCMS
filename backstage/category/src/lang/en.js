@@ -1,5 +1,5 @@
 export default {
-  contentCategory: {
+  category: {
     form_title: "Enter the category title",
     cate_name: "Category Name",
     enabel: "Display",

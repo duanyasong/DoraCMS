@@ -1,7 +1,7 @@
 import * as types from '../types.js';
 import {
-  contentCategoryList,
-} from '@/api/contentCategory';
+  categoryList,
+} from '@/api/category';
 import _ from 'lodash';
 import {
   renderTreeData
@@ -32,7 +32,7 @@ const state = {
 }
 
 const mutations = {
-  [types.CONTENTCATEGORYS_FORMSTATE](state, formState) {
+  [types.CATEGORYS_FORMSTATE](state, formState) {
     state.formState.show = formState.show;
     state.formState.edit = formState.edit;
     state.formState.type = formState.type;
@@ -50,42 +50,42 @@ const mutations = {
     }, formState.formData);
 
   },
-  [types.CONTENTCATEGORYS_LIST](state, categoryList) {
+  [types.CATEGORYS_LIST](state, categoryList) {
     state.categoryList = categoryList
   },
 }
 
 const actions = {
 
-  showContentCategoryForm: ({
+  showCategoryForm: ({
     commit
   }, params = {
     type: 'root',
     edit: false,
     formData: {}
   }) => {
-    commit(types.CONTENTCATEGORYS_FORMSTATE, {
+    commit(types.CATEGORYS_FORMSTATE, {
       show: true,
       type: params.type,
       edit: params.edit,
       formData: params.formData
     })
   },
-  hideContentCategoryForm: ({
+  hideCategoryForm: ({
     commit
   }) => {
-    commit(types.CONTENTCATEGORYS_FORMSTATE, {
+    commit(types.CATEGORYS_FORMSTATE, {
       show: false
     })
   },
-  getContentCategoryList({
+  getCategoryList({
     commit
   }, params = {}) {
-    contentCategoryList(params).then((result) => {
+    categoryList(params).then((result) => {
       let treeData = renderTreeData({
         docs: result.data
       });
-      commit(types.CONTENTCATEGORYS_LIST, treeData)
+      commit(types.CATEGORYS_LIST, treeData)
     })
   },
 

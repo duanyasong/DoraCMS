@@ -1,9 +1,9 @@
 {
   "name": "egg-commerce-contentcategory",
   "version": "1.0.7",
-  "description": "contentCategory",
+  "description": "category",
   "eggPlugin": {
-    "name": "commerceContentCategory"
+    "name": "commerceCategory"
   },
   "keywords": [
     "egg",

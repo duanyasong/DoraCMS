@@ -43,6 +43,13 @@ exports.commerceCustomer = {
 };
 // commerceCustomerPluginEnd
 
+// commerceCategoryPluginBegin
+exports.commerceCategory = {
+    enable: true,
+    package: 'egg-commerce-category',
+    path: path.join(__dirname, "../lib/plugin/egg-commerce-category")
+};
+// commerceCategoryPluginEnd
 
 // commerceCustomergroupsPluginBegin
 exports.commerceCustomergroups = {

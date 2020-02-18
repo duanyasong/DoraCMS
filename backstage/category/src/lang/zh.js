@@ -1,5 +1,5 @@
 export default {
-  contentCategory: {
+  category: {
     form_title: "填写分类信息",
     cate_name: "类别名称",
     enabel: "显示",

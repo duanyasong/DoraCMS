@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     addTopCates() {
-      this.$store.dispatch("contentCategory/showContentCategoryForm", {
+      this.$store.dispatch("category/showCategoryForm", {
         type: "root",
         formData: {
           parentId: "0"

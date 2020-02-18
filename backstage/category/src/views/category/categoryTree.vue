@@ -11,9 +11,9 @@
 
 <script>
 import {
-  deleteContentCategory,
-  getOneContentCategory
-} from "@/api/contentCategory";
+  deleteCategory,
+  getOneCategory
+} from "@/api/category";
 
 import _ from "lodash";
 export default {
@@ -34,7 +34,7 @@ export default {
       let formData = {};
       formData.parentId = data._id;
       formData.parentObj = data;
-      this.$store.dispatch("contentCategory/showContentCategoryForm", {
+      this.$store.dispatch("category/showCategoryForm", {
         edit: false,
         type: "children",
         formData: formData
@@ -43,12 +43,12 @@ export default {
 
     edit(store, data) {
       let rowData = data;
-      getOneContentCategory({ id: rowData._id })
+      getOneCategory({ id: rowData._id })
         .then(result => {
           if (result.status === 200) {
             let categoryInfo = result.data;
             if (!_.isEmpty(categoryInfo)) {
-              this.$store.dispatch("contentCategory/showContentCategoryForm", {
+              this.$store.dispatch("category/showCategoryForm", {
                 edit: true,
                 type: "children",
                 formData: _.assign({}, categoryInfo, {
@@ -77,13 +77,13 @@ export default {
         type: "warning"
       })
         .then(() => {
-          return deleteContentCategory({
+          return deleteCategory({
             ids: data._id
           });
         })
         .then(result => {
           if (result.status === 200) {
-            this.$store.dispatch("contentCategory/getContentCategoryList");
+            this.$store.dispatch("category/getCategoryList");
             this.$message({
               message: this.$t("main.scr_modal_del_succes_info"),
               type: "success"

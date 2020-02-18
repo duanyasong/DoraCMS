@@ -1,6 +1,6 @@
 const getters = {
-  contentCategoryFormState: state => state.contentCategory.formState,
-  contentCategoryList: state => state.contentCategory.categoryList,
+  categoryFormState: state => state.category.formState,
+  categoryList: state => state.category.categoryList,
   templateConfigList: state => state.contentTemplate.templateList,
 }
 export default getters

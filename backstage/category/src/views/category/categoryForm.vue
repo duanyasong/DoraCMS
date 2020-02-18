@@ -6,7 +6,7 @@
       :md="6"
       :lg="6"
       :xl="6"
-      :title="$t('contentCategory.form_title')"
+      :title="$t('category.form_title')"
       :visible.sync="dialogState.show"
       :close-on-click-modal="false"
     >
@@ -19,32 +19,32 @@
       >
         <el-form-item
           v-show="dialogState.type==='children' && !dialogState.edit"
-          :label="$t('contentCategory.parentType')"
+          :label="$t('category.parentType')"
           prop="label"
         >
           <el-input size="small" :disabled="true" v-model="dialogState.formData.parentObj.name"></el-input>
         </el-form-item>
-        <el-form-item :label="$t('contentCategory.cate_name')" prop="name">
+        <el-form-item :label="$t('category.cate_name')" prop="name">
           <el-input size="small" v-model="dialogState.formData.name"></el-input>
         </el-form-item>
-        <el-form-item :label="$t('contentCategory.enabel')" prop="enable">
+        <el-form-item :label="$t('category.enabel')" prop="enable">
           <el-switch
             :on-text="$t('main.radioOn')"
             :off-text="$t('main.radioOff')"
             v-model="dialogState.formData.enable"
           ></el-switch>
         </el-form-item>
-        <el-form-item :label="$t('contentCategory.type')" prop="type">
+        <el-form-item :label="$t('category.type')" prop="type">
           <el-radio
             class="radio"
             v-model="dialogState.formData.type"
             label="1"
-          >{{$t('contentCategory.typeNormal')}}</el-radio>
+          >{{$t('category.typeNormal')}}</el-radio>
           <el-radio
             class="radio"
             v-model="dialogState.formData.type"
             label="2"
-          >{{$t('contentCategory.typeSinger')}}</el-radio>
+          >{{$t('category.typeSinger')}}</el-radio>
         </el-form-item>
         <el-form-item label="图标" prop="sImg" v-show="dialogState.formData.parentId == '0'">
           <el-upload
@@ -61,7 +61,7 @@
         </el-form-item>
         <el-form-item
           v-show="dialogState.formData.parentId == '0'"
-          :label="$t('contentCategory.temp')"
+          :label="$t('category.temp')"
           prop="contentTemp"
         >
           <el-select size="small" v-model="dialogState.formData.contentTemp" placeholder="请选择">
@@ -73,10 +73,10 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item :label="$t('contentCategory.seoUrl')" prop="defaultUrl">
+        <el-form-item :label="$t('category.seoUrl')" prop="defaultUrl">
           <el-input size="small" v-model="dialogState.formData.defaultUrl"></el-input>
         </el-form-item>
-        <el-form-item :label="$t('contentCategory.sort')" prop="sortId">
+        <el-form-item :label="$t('category.sort')" prop="sortId">
           <el-input-number
             size="small"
             v-model="dialogState.formData.sortId"
@@ -85,10 +85,10 @@
             :max="50"
           ></el-input-number>
         </el-form-item>
-        <el-form-item :label="$t('contentCategory.keywords')" prop="keywords">
+        <el-form-item :label="$t('category.keywords')" prop="keywords">
           <el-input type="textarea" :rows="2" v-model="dialogState.formData.keywords"></el-input>
         </el-form-item>
-        <el-form-item :label="$t('contentCategory.comments')" prop="comments">
+        <el-form-item :label="$t('category.comments')" prop="comments">
           <el-input size="small" type="texarea" v-model="dialogState.formData.comments"></el-input>
         </el-form-item>
         <el-form-item>
@@ -104,9 +104,9 @@
 </template>
 <script>
 import {
-  addContentCategory,
-  updateContentCategory
-} from "@/api/contentCategory";
+  addCategory,
+  updateCategory
+} from "@/api/category";
 import settings from "@root/publicMethods/settings";
 import _ from "lodash";
 export default {
@@ -119,7 +119,7 @@ export default {
           {
             required: true,
             message: this.$t("validate.inputNull", {
-              label: this.$t("contentCategory.cate_name")
+              label: this.$t("category.cate_name")
             }),
             trigger: "blur"
           },
@@ -134,7 +134,7 @@ export default {
           {
             required: true,
             message: this.$t("validate.inputNull", {
-              label: this.$t("contentCategory.seoUrl")
+              label: this.$t("category.seoUrl")
             }),
             trigger: "blur"
           }
@@ -163,7 +163,7 @@ export default {
   methods: {
     handleAvatarSuccess(res, file) {
       let imageUrl = res.data.path;
-      this.$store.dispatch("contentCategory/showContentCategoryForm", {
+      this.$store.dispatch("category/showCategoryForm", {
         edit: this.dialogState.edit,
         formData: Object.assign({}, this.dialogState.formData, {
           sImg: imageUrl
@@ -189,7 +189,7 @@ export default {
       console.log(value);
     },
     confirm() {
-      this.$store.dispatch("contentCategory/hideContentCategoryForm");
+      this.$store.dispatch("category/hideCategoryForm");
     },
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
@@ -198,10 +198,10 @@ export default {
           let params = this.dialogState.formData;
           // 更新
           if (this.dialogState.edit) {
-            updateContentCategory(params).then(result => {
+            updateCategory(params).then(result => {
               if (result.status === 200) {
-                this.$store.dispatch("contentCategory/hideContentCategoryForm");
-                this.$store.dispatch("contentCategory/getContentCategoryList");
+                this.$store.dispatch("category/hideCategoryForm");
+                this.$store.dispatch("category/getCategoryList");
                 this.$message({
                   message: this.$t("main.updateSuccess"),
                   type: "success"
@@ -212,10 +212,10 @@ export default {
             });
           } else {
             // 新增
-            addContentCategory(params).then(result => {
+            addCategory(params).then(result => {
               if (result.status === 200) {
-                this.$store.dispatch("contentCategory/hideContentCategoryForm");
-                this.$store.dispatch("contentCategory/getContentCategoryList");
+                this.$store.dispatch("category/hideCategoryForm");
+                this.$store.dispatch("category/getCategoryList");
                 this.$message({
                   message: this.$t("main.addSuccess"),
                   type: "success"

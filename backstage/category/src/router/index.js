@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import settings from "@root/publicMethods/settings";
-import ContentCategory from '@/views/contentCategory'
+import Category from '@/views/category'
 
 Vue.use(Router)
 
@@ -12,9 +12,9 @@ const createRouter = () => new Router({
     y: 0
   }),
   routes: [{
-    path: settings.admin_base_path + '/contentCategory',
-    name: 'contentCategory',
-    component: ContentCategory
+    path: settings.admin_base_path + '/category',
+    name: 'category',
+    component: Category
   }, ]
 })
 

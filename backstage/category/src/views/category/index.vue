@@ -4,8 +4,8 @@
       <CategoryForm :dialogState="formState" :forderlist="getDefaultTempItems"></CategoryForm>
       <el-row class="dr-datatable">
         <el-col :span="24">
-          <TopBar type="contentCategory"></TopBar>
-          <CategoryTree :treeData="contentCategoryList.docs"></CategoryTree>
+          <TopBar type="category"></TopBar>
+          <CategoryTree :treeData="categoryList.docs"></CategoryTree>
         </el-col>
       </el-row>
     </div>
@@ -20,7 +20,7 @@ import _ from "lodash";
 import { initEvent } from "@root/publicMethods/events";
 
 export default {
-  name: "contentCategory",
+  name: "category",
   data() {
     return {
       sidebarOpened: true,
@@ -34,9 +34,9 @@ export default {
   },
   methods: mapActions([]),
   computed: {
-    ...mapGetters(["contentCategoryList", "templateConfigList"]),
+    ...mapGetters(["categoryList", "templateConfigList"]),
     formState() {
-      return this.$store.getters.contentCategoryFormState;
+      return this.$store.getters.categoryFormState;
     },
     getDefaultTempItems() {
       let myTemps = this.templateConfigList;
@@ -56,7 +56,7 @@ export default {
   },
   mounted() {
     initEvent(this);
-    this.$store.dispatch("contentCategory/getContentCategoryList");
+    this.$store.dispatch("category/getCategoryList");
     this.$store.dispatch("contentTemplate/getMyTemplateList");
   }
 };
